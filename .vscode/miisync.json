@@ -1,0 +1,15 @@
+{
+    "systems": [],
+    "removeFromLocalPath": [
+        "webapp"
+    ],
+    "remotePath": "SYSTEM",
+    "downloadOnOpen": true,
+    "uploadOnSave": true,
+    "ignore": [
+        "package.json"
+    ],
+    "include": [],
+    "useRootConfig": true,
+    "rootConfig": "../"
+}
