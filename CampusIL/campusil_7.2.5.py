@@ -1,2 +1,6 @@
 def sequence_del(my_str):
-    s
+    for i in my_str:
+        if my_str.count(i) > 1:
+            
+
+
