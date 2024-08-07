@@ -1,2 +1,2 @@
 def sequence_del(my_str):
-    i h
+    my name is mac
