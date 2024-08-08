@@ -7,13 +7,13 @@ old_list_listed = list(old_list.split(","))
     
 
 def print_old_list(string): #$ 1 !
-    listed = list(string.split(","))
-    listed_join = ", ".join(listed)
+    # listed = list(string.split(","))
+    listed_join = ", ".join(string)
     return listed_join
 
 def len_old_list(string): #$ 2 !
-    listed = string.split(",")
-    length = len(listed)
+    # listed = string.split(",")
+    length = len(string)
     return length
 
 def is_item_inlist(string): #% 3 !
@@ -26,8 +26,23 @@ def how_many_item(string): #$ 4 !
     number_of_item = old_list_listed.count(string)
     return number_of_item
 
-# def delete_item_fromlist(num:int):
+def delete_item_fromlist(num:int): #$ 5 !
+    old_list_listed.remove(old_list_listed[num])
+    return print_old_list(old_list_listed)
 
+def add_item_fromlist(string): #$ 6 !
+    global old_list_listed
+    old_list_listed.append(string)
+    return print_old_list(old_list_listed)
+
+def illegal_item_print(string):
+    new_list = []
+    for i in string:
+        if len(i) < 3 or i.isalpha() == False:
+            new_list.append(i)
+        else:
+            continue
+    return new_list
 
 
 
@@ -50,41 +65,43 @@ def Main_Menu():#% 2 -
 8. Remove Duplicates
 9. Quit
 Choose an action: """) #$ 1 !
+    
     if Menu == "1": #$ 1 !
-        print(print_old_list(old_list))
-        print("Thanks for using!")
+        print(print_old_list(old_list_listed))
         Main_Menu()
 
     elif Menu == "2": #$ 2 !
-        print(len_old_list(old_list))
-        print("Thanks for using!")
+        print(len_old_list(old_list_listed))
         Main_Menu()
 
     elif Menu == "3": #% 3 !
         item = input("Which Item?: ") #! lower / higher case
         print(is_item_inlist(item))
-        print("Thanks for using!")
         Main_Menu()
 
     elif Menu =="4": #$ 4 !
         item = input(f"Which Item?: ")
         print(how_many_item(item))
-        print("Thanks for using!")
         Main_Menu()
 
-
-    elif Menu == "5":
-        a = len_old_list(old_list)
-        item = input(f"Which Item? 0 - {a - 1} : ")
-        print(how_many_item(item))
-        print("Thanks for using!")
+    elif Menu == "5": #$ 5 !
+        a = len_old_list(old_list_listed)
+        item = int(input(f"""Which Item? 0 - {a - 1} : 
+{print_old_list(old_list_listed)} """))
+        print(delete_item_fromlist(item))
         Main_Menu()
 
-    # elif Menu == "6":
+    elif Menu == "6": #$ 6 !
+        item = input("Which Item?: ")
+        print(add_item_fromlist(item))
+        Main_Menu()
+    
+    elif Menu == "7": #$ 6 !
+        print(print_old_list(illegal_item_print(old_list_listed)))
+        Main_Menu()
 
-    # elif Menu == "7":
+    elif Menu == "8":
 
-    # elif Menu == "8":
 
     elif Menu == "9":
         quit()
