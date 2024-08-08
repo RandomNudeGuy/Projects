@@ -26,6 +26,8 @@ def how_many_item(string): #$ 4 !
     number_of_item = old_list_listed.count(string)
     return number_of_item
 
+# def delete_item_fromlist(num:int):
+
 
 
 
@@ -48,30 +50,35 @@ def Main_Menu():#% 2 -
 8. Remove Duplicates
 9. Quit
 Choose an action: """) #$ 1 !
-    if Menu == "1":
+    if Menu == "1": #$ 1 !
         print(print_old_list(old_list))
         print("Thanks for using!")
         Main_Menu()
 
-    elif Menu == "2":
+    elif Menu == "2": #$ 2 !
         print(len_old_list(old_list))
         print("Thanks for using!")
         Main_Menu()
 
-    elif Menu == "3":
+    elif Menu == "3": #% 3 !
         item = input("Which Item?: ") #! lower / higher case
         print(is_item_inlist(item))
         print("Thanks for using!")
         Main_Menu()
 
-
-    elif Menu == "4":
-        item = input("Which Item?: ")
+    elif Menu =="4": #$ 4 !
+        item = input(f"Which Item?: ")
         print(how_many_item(item))
         print("Thanks for using!")
         Main_Menu()
 
-    # elif Menu == "5":
+
+    elif Menu == "5":
+        a = len_old_list(old_list)
+        item = input(f"Which Item? 0 - {a - 1} : ")
+        print(how_many_item(item))
+        print("Thanks for using!")
+        Main_Menu()
 
     # elif Menu == "6":
 
