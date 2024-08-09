@@ -72,6 +72,8 @@ STAGE_SEVEN = ("""
 
 old_letters = []
 underlined_list = []
+
+
 def print_input(letter_guessed):   #% First  
     if word.isalpha() == False and word[1:] != "":
         print("E3")
@@ -131,7 +133,6 @@ def show_hidden_word(secret_word:list, old_letters_guessed):
     global word_length
     global word
     global indices
-    global messege
     # print(underlined)
     for i in secret_word:
         for pos in indices:
@@ -141,19 +142,19 @@ def show_hidden_word(secret_word:list, old_letters_guessed):
             # print("HERE")
             if word in old_letters_guessed: #! already gueesed
                 # print(underlined)
-                a = "Letter already guessed"
-            elif word not in old_letters_guessed and word in secret_word: #$ good guess
+                messege = "Letter already guessed"
+            elif (word not in old_letters_guessed) and (word in secret_word): #$ good guess
                 underlined[finder] = word
-                a = "Good guess!"
-            elif word not in old_letters_guessed and word not in secret_word: #% bad guess
+                messege = "Good guess!"
+            elif word not in secret_word: #% bad guess
                 # print(*underlined)
-                a = "Try again"
+                messege = "Try again"
             else: #! how??
                 # print(*underlined)
-                a = "Else"
-    print(a)
+                messege = "Else"
     print(*underlined)
-    
+    print(messege)
+
 
 def get_indices(element, string):
     indices = []
@@ -173,7 +174,6 @@ for i in word_toguess[0]:
 word_length = len(word_toguess[0])
 empty_space = "_ "
 underlined = []
-messege = "BEFORE"
 for i in range(word_length):
     underlined.append(empty_space)
 
@@ -186,7 +186,7 @@ while True:
     # print(indices)
     print_input(word) #$ Start
     # print(word_guess_underline(word_toguess))
-    print(show_hidden_word(word_toguess_list, old_letters))
+    show_hidden_word(word_toguess_list, old_letters)
     print(try_update_letter_guessed(word, old_letters))
     
     print(old_letters)
