@@ -128,44 +128,65 @@ def show_hidden_word(secret_word:list, old_letters_guessed):
     # for i in range(word_length):
     #     underlined.append(empty_space)
     global underlined
+    global word_length
     global word
-    print(underlined)
+    global indices
+    global messege
+    # print(underlined)
     for i in secret_word:
-        finder = int(secret_word[0].find(word))
-        print(finder)
-        if word in old_letters_guessed: #! already gueesed
-            print(underlined)
-            messege = "Letter already guessed"
-            return messege
-        elif word not in old_letters_guessed and word in secret_word[0]: #$ good guess
-            underlined[finder] = word
-            print(underlined)
-            messege = "Good guess!"
-            continue
-        elif word not in old_letters_guessed and word not in secret_word[0]: #% bad guess
-            print(underlined)
-            messege = "Try again"
-            return messege
-        else: #! how??
-            print(underlined)
-            messege = "Else"
-            return messege
+        for pos in indices:
+            finder = int(pos)
+        # finder = int(secret_word[indices].find(word))
+            # print(finder)
+            # print("HERE")
+            if word in old_letters_guessed: #! already gueesed
+                # print(underlined)
+                a = "Letter already guessed"
+            elif word not in old_letters_guessed and word in secret_word: #$ good guess
+                underlined[finder] = word
+                a = "Good guess!"
+            elif word not in old_letters_guessed and word not in secret_word: #% bad guess
+                # print(*underlined)
+                a = "Try again"
+            else: #! how??
+                # print(*underlined)
+                a = "Else"
+    print(a)
+    print(*underlined)
+    
+
+def get_indices(element, string):
+    indices = []
+    for i in range(len(string)):
+        if string[i] == element:
+            indices.append(i)
+    return indices
+
+
 
 
 word_toguess = [input("Enter a word to guess: ")]
+word_toguess_list = []
+for i in word_toguess[0]:
+    word_toguess_list.append(i) #! word >>> ['w', 'o', 'r', 'd']
 
 word_length = len(word_toguess[0])
 empty_space = "_ "
 underlined = []
+messege = "BEFORE"
 for i in range(word_length):
     underlined.append(empty_space)
+
+
 
 while True:
     word = input("Please enter a letter: ").lower()
     word = word.replace(" ", "")  #remeber to retrun
+    indices = get_indices(word, word_toguess_list)  #! position of letter
+    # print(indices)
     print_input(word) #$ Start
     # print(word_guess_underline(word_toguess))
-    print(show_hidden_word(word_toguess, old_letters))
+    print(show_hidden_word(word_toguess_list, old_letters))
     print(try_update_letter_guessed(word, old_letters))
     
     print(old_letters)
