@@ -134,9 +134,11 @@ def show_hidden_word(secret_word:list, old_letters_guessed):
     global word
     global indices
     # print(underlined)
+    
+    
     for i in secret_word:
-        for pos in indices:
-            finder = int(pos)
+        for a in indices:
+            finder = int(a)
         # finder = int(secret_word[indices].find(word))
             # print(finder)
             # print("HERE")
@@ -153,20 +155,23 @@ def show_hidden_word(secret_word:list, old_letters_guessed):
                 # print(*underlined)
                 messege = "Else"
     print(*underlined)
-    print(messege)
+    print(messege) 
 
 
-def get_indices(element, string):
+def get_indices(element, string): #% element = the letter given | string = the word
     indices = []
     for i in range(len(string)):
         if string[i] == element:
             indices.append(i)
-    return indices
+        # else:
+        #     return 
+    return indices #% find the positions of a letter in a word
+    
 
 
 
 
-word_toguess = [input("Enter a word to guess: ")]
+word_toguess = [input("Enter a word to guess: ")] #input word to guess 
 word_toguess_list = []
 for i in word_toguess[0]:
     word_toguess_list.append(i) #! word >>> ['w', 'o', 'r', 'd']
@@ -175,7 +180,7 @@ word_length = len(word_toguess[0])
 empty_space = "_ "
 underlined = []
 for i in range(word_length):
-    underlined.append(empty_space)
+    underlined.append(empty_space) 
 
 
 
