@@ -117,43 +117,27 @@ def try_update_letter_guessed(letter_guessed, old_letters_guessed): #% Forth
         print("X\n" + new_list)
         return False
 
-# def word_guess_underline(string:list):
-#     word_length = len(string[0])
-#     underlined = "_ " * word_length
-#     print(string)
-#     return underlined
-    
 def show_hidden_word(secret_word:list, old_letters_guessed):
-    # word_length = len(secret_word[0])
-    # empty_space = "_ "
-    # underlined = []
-    # for i in range(word_length):
-    #     underlined.append(empty_space)
     global underlined
     global word_length
     global word
     global indices
-    # print(underlined)
-    
-    
     for i in secret_word:
-        for a in indices:
-            finder = int(a)
-        # finder = int(secret_word[indices].find(word))
-            # print(finder)
-            # print("HERE")
-            if word in old_letters_guessed: #! already gueesed
-                # print(underlined)
-                messege = "Letter already guessed"
-            elif (word not in old_letters_guessed) and (word in secret_word): #$ good guess
-                underlined[finder] = word
-                messege = "Good guess!"
-            elif word not in secret_word: #% bad guess
-                # print(*underlined)
-                messege = "Try again"
-            else: #! how??
-                # print(*underlined)
-                messege = "Else"
+        if indices != []:
+            for a in indices:
+                finder = int(a)
+                if word in old_letters_guessed: #! already gueesed
+                    # print(underlined)
+                    messege = "Letter already guessed"
+                elif (word not in old_letters_guessed) and (word in secret_word): #$ good guess
+                    underlined[finder] = word
+                    messege = "Good guess!"
+        elif word not in secret_word: #% bad guess
+            # print(*underlined)
+            messege = "Try again"
+        else: #! how??
+            # print(*underlined)
+            messege = "Else"
     print(*underlined)
     print(messege) 
 
@@ -163,8 +147,8 @@ def get_indices(element, string): #% element = the letter given | string = the w
     for i in range(len(string)):
         if string[i] == element:
             indices.append(i)
-        elif string[i] != element:
-            continue 
+        else:
+            continue
     return indices #% find the positions of a letter in a word
     
 
