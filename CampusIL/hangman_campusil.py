@@ -65,14 +65,8 @@ STAGE_SEVEN = ("""
     |      / \\
     |""")
 
-
-
-
-
-
 old_letters = []
 underlined_list = []
-
 
 def print_input(letter_guessed):   #% First  
     if word.isalpha() == False and word[1:] != "":
@@ -141,7 +135,6 @@ def show_hidden_word(secret_word:list, old_letters_guessed):
     print(*underlined)
     print(messege) 
 
-
 def get_indices(element, string): #% element = the letter given | string = the word
     indices = []
     for i in range(len(string)):
@@ -151,11 +144,7 @@ def get_indices(element, string): #% element = the letter given | string = the w
             continue
     return indices #% find the positions of a letter in a word
     
-
-
-
-
-word_toguess = [input("Enter a word to guess: ")] #input word to guess 
+word_toguess = [input("Enter a word to guess: ").lower()] #input word to guess 
 word_toguess_list = []
 for i in word_toguess[0]:
     word_toguess_list.append(i) #! word >>> ['w', 'o', 'r', 'd']
@@ -165,8 +154,6 @@ empty_space = "_ "
 underlined = []
 for i in range(word_length):
     underlined.append(empty_space) 
-
-
 
 while True:
     word = input("Please enter a letter: ").lower()
@@ -180,17 +167,4 @@ while True:
     
     print(old_letters)
 
-
-
-
-        
-#% Print letter > Print True if valid input type > Print True if valid input not in list > Print old letter List
-# print(word[1:])
-
-
-
-
-
-# first_try = input("Guess a letter: ").lower()
-# print(first_try)
 
