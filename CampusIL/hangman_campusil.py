@@ -163,8 +163,8 @@ def get_indices(element, string): #% element = the letter given | string = the w
     for i in range(len(string)):
         if string[i] == element:
             indices.append(i)
-        # else:
-        #     return 
+        elif string[i] != element:
+            continue 
     return indices #% find the positions of a letter in a word
     
 
