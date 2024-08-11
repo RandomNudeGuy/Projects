@@ -67,6 +67,9 @@ STAGE_SEVEN = ("""
 
 old_letters = []
 underlined_list = []
+check_win_value = 0
+already_guessed = []
+
 
 def print_input(letter_guessed):   #% First  
     if word.isalpha() == False and word[1:] != "":
@@ -80,20 +83,20 @@ def print_input(letter_guessed):   #% First
         is_valid_input(word)
         #! return word
     else:
-        print("Invalid Input")
+        print("False: Invalid Input")
 
 def is_valid_input(letter_guessed): #% Second
     if word.isalpha() == False and word[1:] != "":
-        print(False)
+        print("False: Invalid Input")
     elif word.isalpha() == False:
-        print(False)
+        print("False: Invalid Input")
     elif word[1:] != "":
-        print(False)
+        print("False: Invalid Input")
     elif word[1:] == "":
-        print(True)
+        print("True: Valid Input")
         check_valid_input(word, old_letters)
     else:
-        print(False)
+        print("False: Invalid Input")
 
 def check_valid_input(letter_guessed, old_letters_guessed): #% Third
     if letter_guessed not in old_letters_guessed:
@@ -144,6 +147,13 @@ def get_indices(element, string): #% element = the letter given | string = the w
             continue
     return indices #% find the positions of a letter in a word
     
+def check_win(secret_word, old_letters_guessed:list):
+    if all(i in old_letters_guessed for i in secret_word):
+        return True
+    else:
+        return False
+
+
 word_toguess = [input("Enter a word to guess: ").lower()] #input word to guess 
 word_toguess_list = []
 for i in word_toguess[0]:
@@ -163,7 +173,8 @@ while True:
     print_input(word) #$ Start
     # print(word_guess_underline(word_toguess))
     show_hidden_word(word_toguess_list, old_letters)
-    print(try_update_letter_guessed(word, old_letters))
+    try_update_letter_guessed(word, old_letters)
+    print(check_win(word_toguess[0], old_letters))
     
     print(old_letters)
 
