@@ -179,4 +179,3 @@ while True:
     print(old_letters)
 
 
-hello
