@@ -147,13 +147,14 @@ def get_indices(element, string): #% element = the letter given | string = the w
             continue
     return indices #% find the positions of a letter in a word
     
+
 def check_win(secret_word, old_letters_guessed:list):
-    if all(i in old_letters_guessed for i in secret_word):
-        return True
-    else:
-        return False
-
-
+    for char in secret_word:
+        if char not in old_letters_guessed:
+            return False
+    return True
+    
+    
 word_toguess = [input("Enter a word to guess: ").lower()] #input word to guess 
 word_toguess_list = []
 for i in word_toguess[0]:
