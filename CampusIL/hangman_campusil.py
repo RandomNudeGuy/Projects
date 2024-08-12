@@ -71,7 +71,7 @@ check_win_value = 0
 already_guessed = []
 
 
-def print_input(letter_guessed):   #% First  
+def print_input(letter_guessed):   #% prints the letter guessed and first check for valid input
     if word.isalpha() == False and word[1:] != "":
         print("E3")
     elif word.isalpha() == False:
@@ -85,7 +85,7 @@ def print_input(letter_guessed):   #% First
     else:
         print("False: Invalid Input")
 
-def is_valid_input(letter_guessed): #% Second
+def is_valid_input(letter_guessed): #% second check if valid input
     if word.isalpha() == False and word[1:] != "":
         print("False: Invalid Input")
     elif word.isalpha() == False:
@@ -98,13 +98,13 @@ def is_valid_input(letter_guessed): #% Second
     else:
         print("False: Invalid Input")
 
-def check_valid_input(letter_guessed, old_letters_guessed): #% Third
+def check_valid_input(letter_guessed, old_letters_guessed): #% third check for valid input. checks if already guessed
     if letter_guessed not in old_letters_guessed:
         return True
     else:
         return False
  
-def try_update_letter_guessed(letter_guessed, old_letters_guessed): #% Forth
+def try_update_letter_guessed(letter_guessed, old_letters_guessed): #% adds letter guessed to already guessed, else shows what already guessed
     if check_valid_input(letter_guessed, old_letters_guessed) == True:
         global old_letters
         old_letters += word
@@ -114,7 +114,7 @@ def try_update_letter_guessed(letter_guessed, old_letters_guessed): #% Forth
         print("X\n" + new_list)
         return False
 
-def show_hidden_word(secret_word:list, old_letters_guessed):
+def show_hidden_word(secret_word:list, old_letters_guessed): #%unvails the words 
     global underlined
     global word_length
     global word
@@ -138,7 +138,7 @@ def show_hidden_word(secret_word:list, old_letters_guessed):
     print(*underlined)
     print(messege) 
 
-def get_indices(element, string): #% element = the letter given | string = the word
+def get_indices(element, string): #% finds positions of letter in a word
     indices = []
     for i in range(len(string)):
         if string[i] == element:
@@ -147,14 +147,13 @@ def get_indices(element, string): #% element = the letter given | string = the w
             continue
     return indices #% find the positions of a letter in a word
     
-
-def check_win(secret_word, old_letters_guessed:list):
+def check_win(secret_word, old_letters_guessed:list): #% checks for win
     for char in secret_word:
         if char not in old_letters_guessed:
             return False
     return True
     
-    
+
 word_toguess = [input("Enter a word to guess: ").lower()] #input word to guess 
 word_toguess_list = []
 for i in word_toguess[0]:
