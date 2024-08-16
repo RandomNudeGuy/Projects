@@ -11,16 +11,13 @@ def sort_anagrams(list_of_strings):
     new_list = []
     for i in list_of_strings:
         innerlist = []
-        if i in innerlist:
-            continue
+        for x in list_of_strings:
+            if sorted(i) == sorted(x) and x not in innerlist:
+                innerlist.append(x)
+        if innerlist not in new_list:
+            new_list.append(innerlist)
         else:
-            for x in list_of_strings:
-                if sorted(i) == sorted(x) and x not in innerlist:
-                    innerlist.append(x)
-            if innerlist not in new_list:
-                new_list.append(innerlist)
-            else:
-                continue
+            continue
 
     return new_list
 
