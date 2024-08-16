@@ -2,18 +2,26 @@ list_of_words = ['deltas', 'retainers', 'desalt', 'pants', 'slated', 'generating
                   'ternaries', 'smelters', 'termless', 'salted', 'staled',
                   'greatening', 'lasted', 'resmelts']
 
-# def list_maker(element1, element2):
-#     if sorted(element1) == sorted(element2):
-        
+
+#$[['deltas', 'desalt', 'slated', 'salted', 'staled', 'lasted'], ['retainers', 'ternaries'], ['pants'], ['generating', 'greatening'], ['smelters', 'termless', 'resmelts']]
+#$[['deltas', 'desalt', 'slated', 'salted', 'staled', 'lasted'], ['retainers', 'ternaries'], ['pants'], ['generating', 'greatening'], ['smelters', 'termless', 'resmelts']]     
 
 
 def sort_anagrams(list_of_strings):
     new_list = []
     for i in list_of_strings:
-        for x in list_of_strings:
-            if sorted(i) == sorted(x) and x not in i and x not in new_list:
-                new_list.append(x)
-    
+        innerlist = []
+        if i in innerlist:
+            continue
+        else:
+            for x in list_of_strings:
+                if sorted(i) == sorted(x) and x not in innerlist:
+                    innerlist.append(x)
+            if innerlist not in new_list:
+                new_list.append(innerlist)
+            else:
+                continue
+
     return new_list
 
 print(sort_anagrams(list_of_words))
