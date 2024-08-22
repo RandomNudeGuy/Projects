@@ -3,6 +3,7 @@ import random
 
 MAX_TRIES = 6
 
+
 HANGMAN_ASCII_ART = ("""                                   
 Welcome to the game
   _    _ 
@@ -65,12 +66,34 @@ STAGE_SEVEN = ("""
     |      / \\
     |""")
 
+HANGMAN_PHOTOS = {"One": STAGE_ONE, "Two": STAGE_TWO, "Three": STAGE_THREE, "Four": STAGE_FOUR, "Five": STAGE_FIVE, "Six": STAGE_SIX, "Seven": STAGE_SEVEN}
+
 old_letters = []
 underlined_list = []
 check_win_value = 0
 already_guessed = []
+num_of_triess = 0
 
-
+def print_hangman(num_of_tries):
+    global num_of_triess
+    if num_of_triess == 1:
+        print(HANGMAN_PHOTOS["One"])
+    if num_of_triess == 2:
+        print(HANGMAN_PHOTOS["Two"])
+    if num_of_triess == 3:
+        print(HANGMAN_PHOTOS["Three"])
+    if num_of_triess == 4:
+        print(HANGMAN_PHOTOS["Four"])
+    if num_of_triess == 5:
+        print(HANGMAN_PHOTOS["Five"])
+    if num_of_triess == 6:
+        print(HANGMAN_PHOTOS["Six"])
+    if num_of_triess >= 7:
+        print(HANGMAN_PHOTOS["Seven"])
+        print("YOU LOST")
+    else:
+        return
+    
 def print_input(letter_guessed):   #% prints the letter guessed and first check for valid input
     if word.isalpha() == False and word[1:] != "":
         print("E3")
@@ -119,6 +142,7 @@ def show_hidden_word(secret_word:list, old_letters_guessed): #%unvails the words
     global word_length
     global word
     global indices
+    global num_of_triess
     for i in secret_word:
         if indices != []:
             for a in indices:
@@ -135,6 +159,8 @@ def show_hidden_word(secret_word:list, old_letters_guessed): #%unvails the words
         else: #! how??
             # print(*underlined)
             messege = "Else"
+    if messege != "Good guess!":
+        num_of_triess += 1
     print(*underlined)
     print(messege) 
 
@@ -174,8 +200,9 @@ while True:
     # print(word_guess_underline(word_toguess))
     show_hidden_word(word_toguess_list, old_letters)
     try_update_letter_guessed(word, old_letters)
+    print(print_hangman(num_of_triess))
     print(check_win(word_toguess[0], old_letters))
-    
+
     print(old_letters)
     
 
