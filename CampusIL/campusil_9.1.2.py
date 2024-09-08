@@ -15,12 +15,15 @@ while True:
         
 
 action_input = input("Choose action: (Last/ Rev/ Sort)").lower()
-filepath_reader = filepath.read()
-filepath_readline = filepath.readline()
+#! filepath_reader = filepath.read()
+#! filepath_readline = filepath.readline()
+#! filepath_readlines = filepath.readlines()
+
 
 # reader = filepath.read()
 # print(reader)
 if action_input == "sort": #$  DONE
+    filepath_reader = filepath.read()
     sort_list = []
     for i in filepath_reader.split():
         if i not in sort_list:
@@ -31,13 +34,16 @@ if action_input == "sort": #$  DONE
     a = sorted(sort_list)
     print(a)    
 
-if action_input == "rev":
-    rev_str = ""
-    for line in filepath_readline:
-        for i in line:
-            # if i == "\n":
-            #     continue
-            # else:
-            rev_str = i + rev_str
+if action_input =="rev": #$DONE
+    for line in filepath:
+        line = line.strip()
+        rev_str = line[::-1]
+        print(rev_str)
+    filepath.close()
 
-    print(rev_str)
+if action_input == "last": #$DONE
+    line_number = int(input("Line: "))
+    data = filepath.readlines()
+    lastline = data[-line_number::]
+    print("".join(lastline))
+    filepath.close()
