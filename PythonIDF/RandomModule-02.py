@@ -72,8 +72,8 @@ import time
 #$Sixth Question
 
 #% def two_numroll():
-#%     NumRoll1 = random.randrange(10, 101, 2)
-#%     NumRoll2 = random.randrange(10, 101, 2)
+#%     NumRoll1 = random.randrange(10, 100, 2)
+#%     NumRoll2 = random.randrange(10, 100, 2)
 
 #%     if NumRoll1 > NumRoll2:
 #%         msg = f"Num1 > {NumRoll1}, is bigger than Num2 > {NumRoll2}"
@@ -109,10 +109,21 @@ import time
 
 #$Eighth Question
 
+def loser():
+    counter = 0
+    for i in range(0, 5):
+        numroll = random.randrange(10, 100)
+        if (numroll % 3) or (numroll % 5) or (numroll % 7) == 0:
+            counter += 1
+        else:
+            continue
+    if counter >= 3:
+        msg = "winner"
+    else:
+        msg = "loser"
+    return msg
 
-            
-
-
+print(loser())
 
     
     
