@@ -89,5 +89,30 @@ import time
 
 #$Seventh Question
 
+#% def six_nums():
+#%     bigNum = 0
+#%     total = 0
+#%     for i in range(0, 6):
+#%         NumRoll = random.randrange(100, 1000)
+#%         print(NumRoll)
+#%         if NumRoll > 500:
+#%             total = total + NumRoll
+#%             bigNum += 1
+#%             time.sleep(3)
+#%         else:
+#%             total = total + NumRoll
+#%             time.sleep(1.5)
+#%     print(bigNum)
+#%     return(total)
 
+#% print(six_nums())
+
+#$Eighth Question
+
+
+            
+
+
+
+    
     
