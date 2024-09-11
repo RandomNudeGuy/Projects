@@ -197,40 +197,40 @@ def choose_word(file_path, index:int):
         index_Extra = index % len_splitter
         print(index_Extra)
         index_WordList = splitter[index_Extra - 1]
-        return len_WordList, index_WordList
+        return index_WordList
     else:
         index_WordList = splitter[index - 1]
-        return len_WordList, index_WordList
+        return index_WordList
 
     
 
 
-print(choose_word(r"/Users/mcrandom/Library/Mobile Documents/com~apple~CloudDocs/Python Projects/Projects/CampusIL/hangman_wordlist.txt", 3))
 
-# word_toguess = [input("Enter a word to guess: ").lower()] #input word to guess 
-# word_toguess_list = []
-# for i in word_toguess[0]:
-#     word_toguess_list.append(i) #! word >>> ['w', 'o', 'r', 'd']
+word_toguess = choose_word(r"/Users/mcrandom/Library/Mobile Documents/com~apple~CloudDocs/Python Projects/Projects/CampusIL/hangman_wordlist.txt", random.randrange(1, 100)) #[input("Enter a word to guess: ").lower()] #input word to guess 
+print(word_toguess)
+word_toguess_list = []
+for i in word_toguess:
+    word_toguess_list.append(i) #! word >>> ['w', 'o', 'r', 'd']
 
-# word_length = len(word_toguess[0])
-# empty_space = "_ "
-# underlined = []
-# for i in range(word_length):
-#     underlined.append(empty_space) 
+word_length = len(word_toguess[0])
+empty_space = "_ "
+underlined = []
+for i in range(word_length):
+    underlined.append(empty_space) 
 
-# while True:
-#     word = input("Please enter a letter: ").lower()
-#     word = word.replace(" ", "")  #remeber to retrun
-#     indices = get_indices(word, word_toguess_list)  #! position of letter
-#     # print(indices)
-#     print_input(word) #$ Start
-#     # print(word_guess_underline(word_toguess))
-#     show_hidden_word(word_toguess_list, old_letters)
-#     try_update_letter_guessed(word, old_letters)
-#     print(print_hangman(num_of_triess))
-#     print(check_win(word_toguess[0], old_letters))
+while True:
+    word = input("Please enter a letter: ").lower()
+    word = word.replace(" ", "")  #remeber to retrun
+    indices = get_indices(word, word_toguess_list)  #! position of letter
+    # print(indices)
+    print_input(word) #$ Start
+    # print(word_guess_underline(word_toguess))
+    show_hidden_word(word_toguess_list, old_letters)
+    try_update_letter_guessed(word, old_letters)
+    print(print_hangman(num_of_triess))
+    print(check_win(word_toguess[0], old_letters))
 
-#     print(old_letters)
+    print(old_letters)
     
 
 
