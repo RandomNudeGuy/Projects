@@ -9,14 +9,18 @@ print(code)
 
 for i in range(0, 5):
     codeinput = input("Enter Code:")
-    if i < 4:
-        if codeinput == code:
-            print("Good Job")
+    if len(codeinput) == 4 and codeinput.isdigit():
+        if i < 4:
+            if codeinput == code:
+                print("Good Job")
+                break
+            else:
+                print("Try Again")
+                continue
+        elif i == 4:
+            print("Too many failed attempts")
             break
-        else:
-            print("Try Again")
-            continue
-    elif i == 4:
-        print("Too many failed attempts")
-        break
+    else:
+        print("Must be 4 digits only")
+        continue
 
